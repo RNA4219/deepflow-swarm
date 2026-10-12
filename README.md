@@ -28,7 +28,7 @@ DeerFlowのGateway APIを接続境界にしています。
 
 ```powershell
 uv sync --locked
-Copy-Item .env.example .env
+Copy-Item .env.sample .env
 ```
 
 起動前に`.env`の`change-me-*`と`LANGFUSE_ENCRYPTION_KEY`を固有値へ置き換え、モデルcredentialと接続先も設定します。暗号化キーは`openssl rand -hex 32`で64桁のhex値を作成します。OpenSandbox serviceから到達できるLiteLLM URLを`LITELLM_BASE_URL`に指定してください。DeerFlowの`config.yaml`には[model設定例](./config/deerflow-models.example.yaml)を取り込み、各aliasを利用できるようにします。OpenSandboxの接続domainは`OPEN_SANDBOX_DOMAIN`に設定します。
@@ -108,6 +108,7 @@ planner、reviewer、Langfuseの接続先もローカルへ設定する必要が
 - [BLUEPRINT](./BLUEPRINT.md)
 - [GUARDRAILS](./GUARDRAILS.md)
 - [運用設定](./.env.example)
+- [ローカル設定の雛形](./.env.sample)
 - [LiteLLM alias設定](./config/litellm.yaml)
 
 ## 開発・検証

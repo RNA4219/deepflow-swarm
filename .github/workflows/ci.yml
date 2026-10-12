@@ -26,8 +26,8 @@ jobs:
       - run: uv build
       - name: Compose設定を検査
         run: |
-          docker compose --env-file .env.example config --quiet
-          docker compose --env-file .env.example -f docker-compose.langfuse.yaml config --quiet
+          docker compose --env-file .env.sample config --quiet
+          docker compose --env-file .env.sample -f docker-compose.langfuse.yaml config --quiet
 
   runtime:
     runs-on: ubuntu-latest
