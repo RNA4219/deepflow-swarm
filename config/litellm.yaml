@@ -1,0 +1,30 @@
+model_list:
+  - model_name: planner
+    litellm_params:
+      model: os.environ/PLANNER_MODEL
+      api_key: os.environ/PLANNER_API_KEY
+  - model_name: worker
+    litellm_params:
+      model: os.environ/WORKER_MODEL
+      api_key: os.environ/WORKER_API_KEY
+  - model_name: reviewer
+    litellm_params:
+      model: os.environ/REVIEWER_MODEL
+      api_key: os.environ/REVIEWER_API_KEY
+  - model_name: local_private
+    litellm_params:
+      model: os.environ/LOCAL_PRIVATE_MODEL
+      api_key: os.environ/LOCAL_PRIVATE_API_KEY
+      api_base: os.environ/LOCAL_PRIVATE_API_BASE
+
+general_settings:
+  master_key: os.environ/LITELLM_MASTER_KEY
+
+litellm_settings:
+  request_timeout: 600
+  num_retries: 2
+
+router_settings:
+  allowed_fails: 2
+  cooldown_time: 30
+

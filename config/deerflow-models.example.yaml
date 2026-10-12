@@ -1,0 +1,38 @@
+# DeerFlowのconfig.yamlへmodels配下を取り込む例。
+# LiteLLMのURLはDeerFlow Gatewayから到達できるアドレスを指定する。
+models:
+  - name: planner
+    display_name: Planner via LiteLLM
+    use: langchain_openai:ChatOpenAI
+    model: planner
+    api_key: $LITELLM_API_KEY
+    base_url: http://litellm:4000/v1
+    request_timeout: 600.0
+    max_retries: 2
+
+  - name: worker
+    display_name: Worker via LiteLLM
+    use: langchain_openai:ChatOpenAI
+    model: worker
+    api_key: $LITELLM_API_KEY
+    base_url: http://litellm:4000/v1
+    request_timeout: 600.0
+    max_retries: 2
+
+  - name: reviewer
+    display_name: Reviewer via LiteLLM
+    use: langchain_openai:ChatOpenAI
+    model: reviewer
+    api_key: $LITELLM_API_KEY
+    base_url: http://litellm:4000/v1
+    request_timeout: 600.0
+    max_retries: 2
+
+  - name: local_private
+    display_name: Private Worker via LiteLLM
+    use: langchain_openai:ChatOpenAI
+    model: local_private
+    api_key: $LITELLM_API_KEY
+    base_url: http://litellm:4000/v1
+    request_timeout: 600.0
+    max_retries: 0

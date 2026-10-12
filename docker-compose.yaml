@@ -1,0 +1,46 @@
+name: deepflow-swarm
+
+services:
+  postgres:
+    image: postgres:17
+    environment:
+      POSTGRES_DB: swarm
+      POSTGRES_USER: swarm
+      POSTGRES_PASSWORD: swarm
+    ports:
+      - "5433:5432"
+    volumes:
+      - swarm-postgres:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U swarm -d swarm"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+
+  litellm:
+    image: ghcr.io/berriai/litellm:main-stable
+    command: ["--config", "/app/config.yaml", "--port", "4000"]
+    environment:
+      LITELLM_MASTER_KEY: ${LITELLM_MASTER_KEY:-sk-swarm-local}
+      PLANNER_MODEL: ${PLANNER_MODEL:-openai/gpt-4o}
+      PLANNER_API_KEY: ${PLANNER_API_KEY:-}
+      WORKER_MODEL: ${WORKER_MODEL:-openai/gpt-4o}
+      WORKER_API_KEY: ${WORKER_API_KEY:-}
+      REVIEWER_MODEL: ${REVIEWER_MODEL:-openai/gpt-4o}
+      REVIEWER_API_KEY: ${REVIEWER_API_KEY:-}
+      LOCAL_PRIVATE_MODEL: ${LOCAL_PRIVATE_MODEL:-openai-compatible/local-model}
+      LOCAL_PRIVATE_API_KEY: ${LOCAL_PRIVATE_API_KEY:-}
+      LOCAL_PRIVATE_API_BASE: ${LOCAL_PRIVATE_API_BASE:-http://host.docker.internal:1234/v1}
+    ports:
+      - "4000:4000"
+    volumes:
+      - ./config/litellm.yaml:/app/config.yaml:ro
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+volumes:
+  swarm-postgres:
+

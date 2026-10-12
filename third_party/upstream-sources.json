@@ -1,0 +1,52 @@
+[
+  {
+    "project": "deerflow",
+    "repository": "bytedance/deer-flow",
+    "revision": "c89fed0be4c64b4d881942a0fd240f239e239e96",
+    "license_source": "https://raw.githubusercontent.com/bytedance/deer-flow/c89fed0be4c64b4d881942a0fd240f239e239e96/LICENSE",
+    "retrieved": "2026-10-12"
+  },
+  {
+    "project": "opencode",
+    "repository": "anomalyco/opencode",
+    "revision": "733b2c627e5aec39cb33cc22373bdce33053ef2c",
+    "license_source": "https://raw.githubusercontent.com/anomalyco/opencode/733b2c627e5aec39cb33cc22373bdce33053ef2c/LICENSE",
+    "retrieved": "2026-10-12",
+    "ref": "v1.19.0"
+  },
+  {
+    "project": "opensandbox",
+    "repository": "opensandbox-group/OpenSandbox",
+    "revision": "98fc6ce404d683e80b86f86e5c817b36658dcde1",
+    "license_source": "https://raw.githubusercontent.com/opensandbox-group/OpenSandbox/98fc6ce404d683e80b86f86e5c817b36658dcde1/LICENSE",
+    "retrieved": "2026-10-12"
+  },
+  {
+    "project": "gastown",
+    "repository": "gastownhall/gastown",
+    "revision": "649b832b7672bc7a2dbef26f5983aba6198b819b",
+    "license_source": "https://raw.githubusercontent.com/gastownhall/gastown/649b832b7672bc7a2dbef26f5983aba6198b819b/LICENSE",
+    "retrieved": "2026-10-12"
+  },
+  {
+    "project": "litellm",
+    "repository": "BerriAI/litellm",
+    "revision": "102619d47a78d80f0383c9e8f52446046f0ecc6b",
+    "license_source": "https://raw.githubusercontent.com/BerriAI/litellm/102619d47a78d80f0383c9e8f52446046f0ecc6b/LICENSE",
+    "retrieved": "2026-10-12"
+  },
+  {
+    "project": "langfuse",
+    "repository": "langfuse/langfuse",
+    "revision": "cb2cebae9f8e7d53e8e514780fce8493d680ecfb",
+    "license_source": "https://raw.githubusercontent.com/langfuse/langfuse/cb2cebae9f8e7d53e8e514780fce8493d680ecfb/LICENSE",
+    "retrieved": "2026-10-12"
+  },
+  {
+    "project": "langfuse-python",
+    "repository": "langfuse/langfuse-python",
+    "revision": "bf11ec121479145923ff27b32ec2ad1d06fd2d51",
+    "license_source": "https://raw.githubusercontent.com/langfuse/langfuse-python/bf11ec121479145923ff27b32ec2ad1d06fd2d51/LICENSE",
+    "retrieved": "2026-10-12"
+  }
+]

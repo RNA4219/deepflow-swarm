@@ -1,0 +1,41 @@
+[build-system]
+requires = ["hatchling>=1.26"]
+build-backend = "hatchling.build"
+
+[project]
+name = "deepflow-swarm"
+version = "0.1.0"
+description = "DeerFlow-based orchestration with OpenCode, OpenSandbox, LiteLLM, and Langfuse"
+license = "MIT"
+license-files = ["LICENSE", "THIRD_PARTY_NOTICES.md", "third_party/licenses/*"]
+requires-python = ">=3.12"
+dependencies = [
+  "asyncpg>=0.30,<1",
+  "httpx>=0.28,<1",
+  "langfuse>=4.0,<5",
+  "opensandbox>=0.1,<1",
+  "pydantic>=2.10,<3",
+  "pydantic-settings>=2.7,<3",
+  "sqlalchemy[asyncio]>=2.0,<3",
+  "typer>=0.15,<1",
+]
+
+[project.scripts]
+deepflow-swarm = "deepflow_swarm.cli:app"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/deepflow_swarm"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E4", "E7", "E9", "F", "I"]
+
+[dependency-groups]
+dev = ["pytest>=8,<10", "pytest-asyncio>=1,<2", "pytest-cov>=6,<8", "aiosqlite>=0.21,<1", "ruff>=0.12,<1", "pyyaml>=6,<7"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
