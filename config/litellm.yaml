@@ -27,4 +27,3 @@ litellm_settings:
 router_settings:
   allowed_fails: 2
   cooldown_time: 30
-
