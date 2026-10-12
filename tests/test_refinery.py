@@ -1,5 +1,6 @@
 import asyncio
 import os
+import re
 import shlex
 import shutil
 from types import SimpleNamespace
@@ -39,8 +40,12 @@ class LocalGitWorkspace:
                 value = "/" + value[0].lower() + value[2:]
             return shlex.quote(value)
 
-        command = command.replace("/workspace/repo", shell_path(self.path("/workspace/repo")))
-        command = command.replace("/tmp/", shell_path(self.path("/tmp")) + "/")
+        # Replace original sandbox paths in one pass; inserted /tmp paths must not be remapped.
+        command = re.sub(
+            r"/workspace/repo|/tmp(?=/)",
+            lambda match: shell_path(self.path(match.group())),
+            command,
+        )
         bash = "C:/Program Files/Git/bin/bash.exe" if os.name == "nt" else shutil.which("bash")
         process = await asyncio.create_subprocess_exec(
             bash, "-c", command, stdout=asyncio.subprocess.PIPE, stderr=asyncio.subprocess.PIPE
